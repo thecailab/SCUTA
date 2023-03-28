@@ -8,7 +8,7 @@ install_github("thecailab/SCUTA")
 ```
 ### Analysis flowchart
 
-![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/5c6478a34b5b2b432b7e92d187fd4fb428ba21e4/Image/pipelineflowchart.png)
+![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/7c92bddda11b0c5014c39478b341cfd30b656c1c/Image/pipelineflowchart.png)
 
 
 ### Model fitting tutorial
