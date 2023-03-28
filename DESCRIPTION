@@ -5,6 +5,6 @@ Version: 0.1.0
 Author: Xuanxuan Yu
 Maintainer: Xuanxuan Yu <xuanxuan@email.sc.edu>
 Description: fit multilevel linear mixed model for single cell RNA-sequencing time series dataset
-License: What license is it under?
+License: MIT License Copyright (c) 2023 thecailab
 Encoding: UTF-8
 LazyData: true
