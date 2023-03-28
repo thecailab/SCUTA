@@ -8,7 +8,7 @@ install_github("xuanxuanyu-bios/SCUTA")
 ```
 ### Analysis flowchart
 
-![pipelineflowchart](https://user-images.githubusercontent.com/66747045/169596929-e20da322-8ac5-4cdc-8e12-12fc04be6f8e.png)
+![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/5c6478a34b5b2b432b7e92d187fd4fb428ba21e4/Image/pipelineflowchart.png)
 
 
 ### Model fitting tutorial
