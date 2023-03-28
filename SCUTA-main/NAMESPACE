@@ -1,0 +1,11 @@
+exportPattern("^[[:alpha:]]+")
+
+export(SCUTA)
+import(foreach)
+import(lme4)
+import(iterators)
+import(pbkrtest) 
+import(variancePartition)
+import(dplyr)
+
+importFrom(limma,is.fullrank)
