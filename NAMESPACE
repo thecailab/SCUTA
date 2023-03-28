@@ -1,10 +1,11 @@
-Package: SCUTA
-Type: Package
-Title: Single Cell rna-seqUencing Time series data Analysis
-Version: 0.1.0
-Author: Xuanxuan Yu
-Maintainer: Xuanxuan Yu <xuanxuan@email.sc.edu>
-Description: fit multilevel linear mixed model for single cell RNA-sequencing time series dataset
-License: What license is it under?
-Encoding: UTF-8
-LazyData: true
+exportPattern("^[[:alpha:]]+")
+
+export(SCUTA)
+import(foreach)
+import(lme4)
+import(iterators)
+import(pbkrtest) 
+import(variancePartition)
+import(dplyr)
+
+importFrom(limma,is.fullrank)
