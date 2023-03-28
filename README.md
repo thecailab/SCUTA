@@ -4,7 +4,7 @@
 ### install SCUTA
 ```
 library(devtools)
-install_github("xuanxuanyu-bios/SCUTA")
+install_github("thecailab/SCUTA")
 ```
 ### Analysis flowchart
 
