@@ -46,7 +46,9 @@ fluidigm_zinb <- zinbwave(fluidigm, fitted_model = zinb, K = 2, epsilon=1000, ob
 weights <- assay(fluidigm_zinb, "weights")
 ```
 `voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute observation-level weights. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data. The model can be expressed as 
+
 $$ E(log_2(Y_ig)) = \beta_{0g} + \beta_{1g} * condition_{i} + \beta_{2g} * time_{i} + \alpha_{0ig} + \alpha_{1ig} * time_{i} $$
+
 Where $i$ denotes cell, $g$ represents gene,
 $\alpha_{0ig}$ is the random sample effect,
 and $\alpha_{1ig}$ is the random time effect.
