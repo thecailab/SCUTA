@@ -8,8 +8,7 @@ install_github("thecailab/SCUTA")
 ```
 ### Analysis flowchart
 
-![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/7c92bddda11b0c5014c39478b341cfd30b656c1c/Image/pipelineflowchart.png)
-
+![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/e0c34ec51894c4ba849d50dbccbccd8a22b0994b/Image/pipeline%20flowchart2.png)
 
 ### Model fitting tutorial
 `SCUTA` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
