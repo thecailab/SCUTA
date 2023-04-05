@@ -11,7 +11,7 @@ install_github("thecailab/SCUTA")
 ![pipelineflowchart](https://github.com/thecailab/SCUTA/blob/e0c34ec51894c4ba849d50dbccbccd8a22b0994b/Image/pipeline%20flowchart2.png)
 
 ### Model fitting tutorial
-`SCUTA` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
+`SCUTA` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. Two multi-level designs are shown in the flowchart. Focusing on design 1, we show how to integrate precison weights and dropout weights into the differential expression analysis in scRNA-seq data.
 ```
 Load library and data
 library("SCUTA")
@@ -38,13 +38,13 @@ fluidigm <- DESeqDataSetFromMatrix(countData = counts,
                                    colData = coldata,
                                    design = ~ condition + time)
 ```
-The zinbwave function is used to compute observational weights which unlock bulk RNA-seq tools for single-cell applications, as illustrated in [Van den Berge et al. 2018](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4).
+The zinbwave function is used to compute dropout weights which alleviate the bias casued by dropout event and thus unlock bulk RNA-seq tools for single-cell applications, as illustrated in [Van den Berge et al. 2018](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4).
 ```
 zinb <- zinbFit(fluidigm, K=2, epsilon=1000)
 fluidigm_zinb <- zinbwave(fluidigm, fitted_model = zinb, K = 2, epsilon=1000, observationalWeights = TRUE)
 weights <- assay(fluidigm_zinb, "weights")
 ```
-`voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute observation-level weights. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data. The model can be expressed as 
+`voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute the precision weights, which capture the measurement error in RNA-seq counts. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data. The model can be expressed as 
 
 $$ E(log_2(Y_ig)) = \beta_{0g} + \beta_{1g} * condition_{i} + \beta_{2g} * time_{i} + \alpha_{0ig} + \alpha_{1ig} * time_{i} $$
 
@@ -64,7 +64,7 @@ vobjDream.weight$weights <- weights*vobjDream.weight$weights
 fit.SCUTA     <- SCUTA( vobjDream.weight, form, coldata)
 ```
 
-The `SCUTA()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'SCUTA()' function. For example, the top 6 differentiall expressed genes between two conditions are 
+The `SCUTA()` function is modified to replace the 'dream()' function in variancePartition, so that they share the same parameters and any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'SCUTA()' function. For example, the top 6 differentiall expressed genes between two conditions are 
 
 ```
 fit.SCUTA.res <- topTable(fit.SCUTA, coef="condition2", number=nrow(counts) )
