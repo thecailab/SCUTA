@@ -200,7 +200,7 @@ SCUTA<-function (exprObj, formula, data, L, ddf = c("Satterthwaite",
     names(resList) = seq_len(length(resList))
     if (!quiet)
       message("\nTotal:", paste(format((proc.time() -
-                                          timeStart)[3], digits = 0), "s"))
+                                          timeStart)[3], digits = 1), "s"))
     x = 1
     coefficients = foreach(x = resList, .combine = cbind) %do%{
         x$ret$coefficients
